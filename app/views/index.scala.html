@@ -12,41 +12,17 @@
     </div>
 
     <button onclick="newJoke()">New Joke</button>
+
+    <input class="form-control" placeholder="First Name" id="firstName"/>
+    <input class="form-control" placeholder="Last Name" id="lastName"/>
+
+    <button class="btn btn-success" onclick="changeName()">Submit</button>
+</div>
+
 <div class="hero is-primary">
     <div class="hero-footer">
         2019-ToddNorris
     </div>
 </div>
 
-<script>
-    var Http = new XMLHttpRequest();
-    var url = window.location.href + "joke";
-    Http.open("GET", url);
-    Http.send();
-
-    Http.onreadystatechange = function() {
-        var joke = JSON.parse(Http.responseText)["joke"];
-        document.getElementById("joke").innerHTML = joke;
-    };
-
-    newJoke = function() {
-        Http.open("GET", url);
-        Http.send();
-    };
-
-    changeName = function() {
-        var postUrl = window.location.href + "home/Post";
-        var data = {
-            "firstName": document.getElementById("firstName").value,
-            "lastName": document.getElementById("lastName").value
-        };
-        var postHttp = new XMLHttpRequest();
-        postHttp.open("POST", postUrl, true);
-        postHttp.onreadystatechange = function() {
-            newJoke();
-        };
-        postHttp.setRequestHeader('Content-type','application/json; charset=utf-8');
-        postHttp.send(JSON.stringify(data));
-    };
-</script>
 }

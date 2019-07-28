@@ -1,6 +1,7 @@
 package models;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import jdk.nashorn.internal.runtime.options.Option;
 import play.api.libs.json.JsValue;
 import play.libs.Json;
 import scala.util.parsing.json.JSONObject;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Optional;
 
 public class Joke {
 
@@ -35,12 +37,27 @@ public class Joke {
          this.val = Json.parse(content.toString());
     }
 
-    public String getVal() {
+    public String getVal(Optional<String> firstName, Optional<String> lastName) {
+        String fName = "";
+        if (firstName.isPresent()) {
+            fName = firstName.get().toString();
+        } else {
+            fName = "Todd";
+        }
+
+        String lName = "";
+        if (lastName.isPresent()) {
+            lName = lastName.get().toString();
+        } else {
+            lName = "Eidson";
+        }
+
+
         String joke = this.val.get("value").toString();
         joke = joke
-                .replaceAll("Chuck", "Todd")
-                .replaceAll("Norris'", "Eidson's")
-                .replaceAll("Norris", "Eidson");
+                .replaceAll("Chuck", fName)
+                .replaceAll("Norris'", lName +"'s")
+                .replaceAll("Norris", lName);
         return joke;
     }
 }

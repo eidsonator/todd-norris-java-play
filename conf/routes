@@ -5,9 +5,9 @@
 # Home page
 GET     /                           controllers.Application.index
 
-GET     /help                       controllers.Application.help
+GET     /joke                       controllers.Application.joke(request: Request)
 
-GET     /joke                       controllers.Application.joke
+GET     /name                       controllers.Application.post_name(request: Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
