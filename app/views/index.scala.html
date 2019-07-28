@@ -1,28 +1,43 @@
 @(message: String)
 
 @main("Todd Norris") {
-<div class="hero is-primary">
-    <div class="hero-header">
-        <h1>Todd Norris</h1>
-    </div>
-</div>
-<div>
-    <div id="joke" class="hero-body">
+<section class="hero is-info is-fullheight">
+        <div class="hero-header">
+            <h1>Todd Norris</h1>
+        </div>
+        <div class="hero-body is-primary">
+            <div class="container has-text-centered" style="background-color: aliceblue;color: dodgerblue" >
 
-    </div>
+                <div class="column is-12">
+                    <h1 class="header is-size-4" id="joke"></h1>
+                </div>
+                <div class="column is-6 is-offset-3">
 
-    <button onclick="newJoke()">New Joke</button>
-
-    <input class="form-control" placeholder="First Name" id="firstName"/>
-    <input class="form-control" placeholder="Last Name" id="lastName"/>
-
-    <button class="btn btn-success" onclick="changeName()">Submit</button>
-</div>
-
-<div class="hero is-primary">
-    <div class="hero-footer">
-        2019-ToddNorris
-    </div>
-</div>
-
+                    <div class="field">
+                        <button class="button is-primary" onclick="newJoke()">New Joke</button>
+                    </div>
+                    <hr>
+                    <p>
+                        Try your name in a Chuck Norris Joke!  Enter your first and last name and click the "Submit" button.
+                    </p>
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" placeholder="First Name" id="firstName"/>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" placeholder="Last Name" id="lastName"/>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <button class="button is-success" onclick="changeName()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-footer">
+            2019-ToddNorris
+        </div>
+</section>
 }
